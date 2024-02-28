@@ -17,8 +17,8 @@
         Role<br>
         <select name="role">
             <option value="0">Role</option>
-            <option value="1">Admin</option>
-            <option value="2">User</option>
+            <option value="admin">Admin</option>
+            <option value="staff">Staff</option>
         </select><br>
         <input type="submit" value="SIGNUP"><br><br>
         Already have an account? <a href="login.php">Login</a>

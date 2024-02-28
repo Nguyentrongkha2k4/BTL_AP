@@ -20,10 +20,10 @@ if($email == ""){
         $id = array_keys($data)[0];
         if($data[$id]['password'] == md5($password)){
             $_SESSION['user'] = $data[$id];
-            if($data[$id]['role'] == "1"){
+            if($data[$id]['role'] == "admin"){
                 header("location: admin-web.php");
-            }else if($data[$id]['role'] == "2"){
-                header("location: user-web.php");
+            }else if($data[$id]['role'] == "staff"){
+                header("location: staff-web.php");
             }else{
                 echo "Your account is not available!";
             }

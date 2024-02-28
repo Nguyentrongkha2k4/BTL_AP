@@ -1,0 +1,47 @@
+html, body{
+    margin: 0;
+    font-family: Arial, Times, sans-serif;
+}
+.background-setting{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    background-color: rgba(10, 229, 10, 0.61);
+    position: relative;
+}
+.background-c{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: rgba(0, 156, 0, 0.822);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box{
+    height: 50vh;
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.img-login{
+    width: 60%;
+    height: 100%;
+    background-color: pink;
+}
+.img-in{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+}
+.login-box-form{
+    height: 100%;
+    width: 40%;
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
