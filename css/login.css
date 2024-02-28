@@ -19,7 +19,7 @@ html, body{
     align-items: center;
 }
 .login-box{
-    height: 55vh;
+    height: 63vh;
     width: 60%;
     display: flex;
     justify-content: space-between;
@@ -28,7 +28,7 @@ html, body{
 .img-login{
     width: 70%;
     height: 100%;
-    background: url(./images/login-background.webp) no-repeat center /cover;
+    background: url(../images/login-background.webp) no-repeat center /cover;
     opacity: 0.9;
     display: flex;
     align-items: center;
@@ -95,7 +95,7 @@ html, body{
 .email-input{
     height: 24px;
     background-color: rgba(0, 0, 0, 0.147);
-    background: url(./images/account-icon.png) no-repeat;
+    background: url(../images/account-icon.png) no-repeat;
     background-size: 12px;
     background-position: 9px 7px; 
     background-repeat: no-repeat;
@@ -105,7 +105,7 @@ html, body{
 .password-input{
     height: 24px;
     background-color: rgba(0, 0, 0, 0.147);
-    background: url(./images/password-icon.png) no-repeat;
+    background: url(../images/password-icon.png) no-repeat;
     background-size: 12px;
     background-position: 9px 7px; 
     background-repeat: no-repeat;
