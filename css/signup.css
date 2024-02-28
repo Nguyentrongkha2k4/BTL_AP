@@ -24,6 +24,7 @@ html, body{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    border-radius: 10px;
 }
 .img-login{
     width: 70%;
@@ -83,13 +84,23 @@ html, body{
     text-align: center;
     font-size: 20px;
 }
-.attr{
-    margin-top: 20px;
+.name-input{
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.147);
+    background: url(./images/account-icon.png) no-repeat;
+    background-size: 12px;
+    background-position: 9px 7px; 
+    background-repeat: no-repeat;
+    padding-left: 30px ;
+    color: white
 }
-.email-input::placeholder,.password-input::placeholder{
+.attr{
+    margin-top: 10px;
+}
+.email-input::placeholder,.password-input::placeholder, .name-input::placeholder, .password-confirm-input::placeholder{
     color: rgb(200, 200, 200);
 }
-.email-input, .password-input{
+.email-input, .password-input, .password-confirm-input, .name-input{
     border-radius: 2px;
 }
 .email-input{
@@ -103,6 +114,16 @@ html, body{
     color: white
 }
 .password-input{
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.147);
+    background: url(./images/password-icon.png) no-repeat;
+    background-size: 12px;
+    background-position: 9px 7px; 
+    background-repeat: no-repeat;
+    padding-left: 30px ;
+    color: white
+}
+.password-confirm-input{
     height: 24px;
     background-color: rgba(0, 0, 0, 0.147);
     background: url(./images/password-icon.png) no-repeat;
