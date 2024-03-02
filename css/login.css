@@ -135,3 +135,7 @@ html, body{
     color: rgb(21, 237, 104);
     text-decoration: none;
 }
+.signup-success{
+    padding-top: 10px;
+    color: rgb(47, 178, 0);
+}

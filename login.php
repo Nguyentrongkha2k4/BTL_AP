@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/login.css">
-    <link rel="shortcut icon" href="./images/shortcut-icon.png">
+    <link rel="shortcut icon" href="./images/logo.png">
     <title>Bệnh viện ABC - Đăng nhập</title>
 </head>
 <body>
@@ -21,6 +21,10 @@
                 <div class="login-box-form">
                     <form class="form-login" method="post" action="login_action.php">
                         <div class="header-form"><b>LOGIN FORM</b></div>
+                        <?php
+                        if(isset($_GET['in4'])){ ?>
+                            <div class="signup-success"><?php echo $_GET['in4']; ?> </div>
+                        <?php } ?>
                         <div class="attr">Email:</div>
                         <input class="email-input" type="email" name="email" placeholder="Your email..." >
                         <div class="attr">Password:</div>

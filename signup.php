@@ -1,9 +1,14 @@
+<?php
+include("config.php");
+include("firebaseRDB.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./images/shortcut-icon.png">
+    <link rel="shortcut icon" href="./images/logo.png">
     <link rel="stylesheet" href="./css/signup.css">
     <title>Bệnh viện ABC - Đăng ký</title>
 </head>

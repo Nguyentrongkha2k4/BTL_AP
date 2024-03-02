@@ -28,7 +28,7 @@ if($name == ""){
     $data = json_decode($retrieve, 1);
 
     if(count($data) > 0){
-        echo "Email already used";
+        header("location: signup.php?error=Email already used");
     }else{
         $insert = $rdb->insert("/user", [
             "name" => $name,
@@ -38,7 +38,7 @@ if($name == ""){
 
         $result = json_decode($insert, 1);
         if(isset($result['name'])){
-            header("location: signup.php?in4=Sign up success, please login");
+            header("location: login.php?in4=Sign up success. You can login now.");
         }else{
             echo "Sign up failed";
         }

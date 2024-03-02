@@ -1,51 +1,53 @@
 <?php
 include("config.php");
 include("firebaseRDB.php");
+
+if(!isset($_SESSION['user'])){
+    header("loation: login.php");
+}
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Bệnh viện ABC</title>
-    <link rel="stylesheet" href="./css/main-web.css">
-    <link rel="shortcut icon" href="./images/shortcut-icon.png">
-</head>
-<body>
-    <div class="header-website">
-        <div class="header-account">
-            <div></div>
-        </div>
-        <div class="header-text">
-            <img class="header-img"  src="./images/textfx.png" alt="none">
-        </div>
-    </div>
-    <div>
-        <!-- function -->
-        <div class="function-main-web">
-            <div class="">
-                <details>
-                    <summary>Tài khoản</summary>
-                    <ul>
-                        <li>Thông tin</li>
-                        <li>Lịch trình làm việc</li>
-                        <li>Đăng xuất</li>
-                    </ul>
-                </details>
-            </div>
-            <div>
-                <details>
-                    <summary></summary>
-                </details>
-            </div>
-            <div></div>
-            <div></div>
-        </div>
+    <head>
+        <title>Bệnh viên ABC | Trang chủ</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/main-web.css">
+        <link rel="shortcut icon" href="./images/logo.png">
+    </head>
 
-        <!-- in4mation of function-->
-        <div class="in4mation-of-func">
-
+    <body>
+        <div class="header-1">
+            <div class="begin-header-1">
+                <div class="logo">
+                    <img class="logo-img" src="./images/logo.png" alt="none">
+                </div>
+                <div class="Name-text">
+                    Quản lí bệnh viện(need text decoration)
+                </div>
+            </div>
+            <div class="end-header-1">
+                <div>Hello, <b><?php echo $_SESSION['user']['name'] ?></b> (<a class="logout-header-1" href='logout.php'>Thoát</a>)</div>
+            </div>
         </div>
-    </div>
-</body>
+        <div class="obj-2">
+            <ul class="list-option-obj-2">
+                <li >
+                    <a class="main-page" href="main-web.php">Trang chủ</a>
+                </li>
+                <li>
+                    <a href="">Quản lý nhân viên y tế</a>
+                </li>
+                <li>
+                    <a href="patient-manager.php">Quản lý bệnh nhân</a>
+                </li>
+                <li>
+                    <a href="">Quản lý thuốc và thiết bị y tế</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-background-website">
+            <!-- <div class="name-inpic">Bệnh viện ABC</div> -->
+        </div>
+    </body>
 </html>
