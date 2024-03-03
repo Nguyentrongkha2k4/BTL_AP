@@ -1,6 +1,9 @@
 <?php
 include("config.php");
 include("firebaseRDB.php");
+if(!isset($_SESSION['user'])){
+    header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +48,7 @@ include("firebaseRDB.php");
         <div class ="qlnv">
             <div class="name-table">Quản lý nhân viên y tế</div>
             <div>
+                <div class="text-insert">Tìm kiếm nhân viên:</div>
                 <form class="search-form" action="staff_mag_action.php" method="post">
                     <div>ID:</div>
                     <input class="search-ID" type="text" name="IDStaff">
@@ -66,42 +70,125 @@ include("firebaseRDB.php");
             </div>
             <div class="list-box">
                 <!-- list -->
-                <div class="">
+                <div class="list-of-nv">
                     <?php
-                    if(isset($_SESSION['list'])){
-                        echo '<ul>';
-                        foreach($_SESSION['list'] as $staff){
-                            echo '<li>' . 
-                                $staff['ID'] . ' - ' . 
-                                $staff['name'] . ' - ' . 
-                                $staff['dateOfBorn'] . ' - ' . 
-                                $staff['position'] . 
-                            '</li>';
-                        }
-                        echo '</ul>';
+                    if(isset($_SESSION['list'])){?> 
+                        <table class="list-staff">
+                            <tr>
+                                <td>
+                                    <table>
+                                    <th>ID</th>
+                                    <th>Họ và tên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Chức vụ</th>
+                                    <th>Chỉnh sửa</th>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="scroll-table">  <table >
+                                <?php
+                                foreach($_SESSION['list'] as $staff){
+                                    echo '<tr>' . '<td>' .
+                                        $staff['ID'] . '</td><td>' . 
+                                        $staff['name'] . '</td><td>' . 
+                                        $staff['dateOfBorn'] . '</td><td>' . 
+                                        $staff['position'] . '</td>'; ?>
+                                        <td><a href="">chỉnh sửa</a> </td> </tr>
+                                        <?php
+                                }?>
+                                    </table>    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php
                         unset($_SESSION['list']);
+                    }else{
+                        $rdb = new firebaseRDB($databaseURL);
+                        $retrive = $rdb->retrieve("/staffManager");
+                        $data = json_decode($retrive, 1);
+                        if($data == ""){ ?>
+                            <table class="list-staff">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Họ và tên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Chức vụ</th>
+                                    <th>Chỉnh sửa</th>
+                                </tr>
+                            </thead>
+                            </table>
+                        <?php }else{
+                        ?> 
+                        <table class="list-staff">
+                            <tr>
+                                <td>
+                                    <table>
+                                    <th>ID</th>
+                                    <th>Họ và tên</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Chức vụ</th>
+                                    <th>Chỉnh sửa</th>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="scroll-table">  <table >
+                                <?php
+                                foreach($data as $staff){
+                                    echo '<tr>' . '<td>' .
+                                        $staff['ID'] . '</td><td>' . 
+                                        $staff['name'] . '</td><td>' . 
+                                        $staff['dateOfBorn'] . '</td><td>' . 
+                                        $staff['position'] . '</td>'; ?>
+                                        <td><a href="">chỉnh sửa</a> </td> </tr>
+                                        <?php
+                                }?>
+                                    </table>    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php
+                        }
                     }
                     ?>
                 </div>
-
+                <?php
+                        if(isset($_GET['in4'])){ ?>
+                      
+                            <div id="in4-insert"><?php echo $_GET['in4']; ?></div>
+               
+                <?php } ?>
+                <script>
+                    setTimeout(() => {
+                        let info = document.getElementById("in4-insert");
+                        // info.innerHTML="snv";
+                        info.className = "show";
+                    }, 2000);
+                </script>
                 <!-- insert -->
-                <div>
-                    <form action="insert_staff_action.php" method="post">
-                        <?php
-                            if(isset($_GET['in4'])){ ?>
-                                <div><?php echo $_GET['in4']; ?></div>
-                        <?php } ?>
-                        <input type="text" name="ID">
-                        <input type="text" name="namestaff">
-                        <input type="date" name="dateofborn">
-                        <select name="positionstaff">
-                            <option value="chutich">Chủ tịch</option>
-                            <option value="truongphong">Trưởng phòng</option>
-                            <option value="phophong">Phó phòng</option>
-                            <option value="bacsi">Bác sĩ</option>
-                            <option value="yta">Y tá</option>
+                <div class="insert-box">
+                    <div class="text-insert">Thêm nhân viên</div>
+                    
+                    <form class="insert-form" action="insert_staff_action.php" method="post">
+                        <div>ID:</div>
+                        <input class="search-ID" type="text" name="ID">
+                        <div>Họ và tên:</div>
+                        <input class="search-name" type="text" name="namestaff">
+                        <div>Ngày sinh:</div>
+                        <input class="search-born" type="date" name="dateofborn">
+                        <div>Chức vụ:</div>
+                        <select class="position-staff" name="positionstaff">
+                            <option value="Viện Trưởng">Viện trưởng</option>
+                            <option value="Trưởng phòng">Trưởng phòng</option>
+                            <option value="Phó phòng">Phó phòng</option>
+                            <option value="Bác sĩ">Bác sĩ</option>
+                            <option value="Y tá">Y tá</option>
                         </select>
-                        <input type="submit" value="Thêm">
+                        <input class="search-button" type="submit" value="Thêm">
                     </form>
                 </div>
             </div>

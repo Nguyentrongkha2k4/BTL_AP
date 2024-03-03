@@ -1,9 +1,8 @@
 <?php
 include("config.php");
 include("firebaseRDB.php");
-
 if(!isset($_SESSION['user'])){
-    header("loation: login.php");
+    header("location: login.php");
 }
 ?>
 

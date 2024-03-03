@@ -123,20 +123,21 @@ body{
 .qlnv{
     height: 85vh;
     width: 100%;
+    background-image: linear-gradient(135deg, #C8EDFF, #DFCBFF);
 }
 .name-table{
     font-size: 20px;
     display: flex;
-    margin: 10px;
+    padding: 10px;
     font-weight: bold;
     justify-content: center;
 }
-.search-form{
+.search-form, .insert-form{
     display: flex;
-    justify-content: center;
+    margin: 0 10%;
     flex-direction: row;
 }
-.search-form > input, select{
+.search-form > input, select, .insert-form > input, select{
     margin: 0 60px 0 5px;
 }
 .search-ID{
@@ -162,7 +163,41 @@ body{
 .search-button:hover{
     cursor: pointer;
 }
-table, th, td{
-    border: 1px solid;
+table{
     
+    width: 1250px;
+    border: 1px solid;
+    background-color: blanchedalmond;
+}
+th,td{
+    border: 1px solid;
+    width: 99px;
+}
+.scroll-table{
+    height: 350px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.insert-box{
+    height: 10%;
+    margin-top: 30px;
+}
+.list-of-nv{
+    display: flex;
+    justify-content: center;
+}
+#in4-insert{
+    width: fit-content;
+    margin: 20px 0 0 80%;
+    color: rgb(219, 0, 0);
+    background-color: rgb(0, 255, 0);
+    position: absolute;
+}
+.show {
+    display: none;
+}
+
+.text-insert{
+    margin: 0 0 10px 10%;
 }
