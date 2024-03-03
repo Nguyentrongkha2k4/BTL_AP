@@ -27,7 +27,7 @@ if(!isset($_SESSION['user'])){
                 </div>
             </div>
             <div class="end-header-1">
-                <div>Hello, <b><?php echo $_SESSION['user']['name'] ?></b> (<a class="logout-header-1" href='logout.php'>Thoát</a>)</div>
+                <div>Xin chào, <b><?php echo $_SESSION['user']['name'] ?></b> (<a class="logout-header-1" href='logout.php'>Thoát</a>)</div>
             </div>
         </div>
         <div class="obj-2">
@@ -36,7 +36,7 @@ if(!isset($_SESSION['user'])){
                     <a class="main-page" href="main-web.php">Trang chủ</a>
                 </li>
                 <li>
-                    <a href="">Quản lý nhân viên y tế</a>
+                    <a href="staff-mag.php">Quản lý nhân viên y tế</a>
                 </li>
                 <li>
                     <a href="patient-manager.php">Quản lý bệnh nhân</a>

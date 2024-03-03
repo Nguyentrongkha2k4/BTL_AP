@@ -25,24 +25,24 @@ include("firebaseRDB.php");
                 </div>
                 <div class="login-box-form">
                     <form class="form-login" method="post" action="signup_action.php">
-                        <div class="header-form"><b>SIGN UP FORM</b></div>
+                        <div class="header-form"><b>Đăng ký</b></div>
                         <?php 
                             if(isset($_GET['error'])){ ?>
                             <div class="error"><?php echo $_GET['error']; ?></div>
                         <?php } ?>
-                        <div>Full name:</div>
+                        <div>Họ và tên:</div>
                         <input class="name-input" type="text" name="name" placeholder="Your name...">
                         <div class="attr">Email:</div>
                         <input class="email-input" type="email" name="email" placeholder="Your email..." >
-                        <div class="attr">Password:</div>
-                        <input class="password-input" type="password" name="password" placeholder="Your Password...">
-                        <div class="attr">Confirm password*:</div>
+                        <div class="attr">Mật khẩu:</div>
+                        <input class="password-input" type="password" name="password" placeholder="Your password...">
+                        <div class="attr">Xác nhận mật khẩu*:</div>
                         <input class="password-confirm-input" type="password" name="password-confirm" placeholder="Your password..."><br>
                         <div class="button-box">
-                            <input class="button-submit" type="submit" value="SIGN UP">
+                            <input class="button-submit" type="submit" value="Đăng ký">
                         </div>
                         <div>
-                            Already have an account? <a class="signup-button" href="login.php">Login</a>
+                            Already have an account? <a class="signup-button" href="login.php">Đăng nhập</a>
                         </div> 
                         <div>
                             

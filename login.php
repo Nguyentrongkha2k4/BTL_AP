@@ -20,20 +20,20 @@
                 </div>
                 <div class="login-box-form">
                     <form class="form-login" method="post" action="login_action.php">
-                        <div class="header-form"><b>LOGIN FORM</b></div>
+                        <div class="header-form"><b>Đăng nhập</b></div>
                         <?php
                         if(isset($_GET['in4'])){ ?>
                             <div class="signup-success"><?php echo $_GET['in4']; ?> </div>
                         <?php } ?>
                         <div class="attr">Email:</div>
                         <input class="email-input" type="email" name="email" placeholder="Your email..." >
-                        <div class="attr">Password:</div>
+                        <div class="attr">Mật khẩu:</div>
                         <input class="password-input" type="password" name="password" placeholder="Your Password..."><br>
                         <div class="button-box">
-                            <input class="button-submit" type="submit" value="LOGIN">
+                            <input class="button-submit" type="submit" value="Đăng nhập">
                         </div><br>
                         <div>
-                            Don't have an account yet? <a class="signup-button" href="signup.php">Sign up</a>
+                            Don't have an account yet? <a class="signup-button" href="signup.php">Đăng ký</a>
                         </div> 
                         <div>
                             
