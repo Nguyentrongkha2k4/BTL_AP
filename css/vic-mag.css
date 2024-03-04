@@ -138,7 +138,7 @@ body{
     flex-direction: row;
 }
 .search-form > input, select, .insert-form > input, select{
-    margin: 0 60px 0 5px;
+    margin: 0 40px 0 5px;
 }
 .search-ID{
     width: 115px;
@@ -149,8 +149,8 @@ body{
 .search-born{
     width: 105px;
 }
-.position-staff{
-    width: 115px;
+.position-vic{
+    width: fit-content;
 }
 .list-box{
     height: 100%;
@@ -177,7 +177,6 @@ th,td,tr{
 }
 .align-table{
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 .scroll-table{

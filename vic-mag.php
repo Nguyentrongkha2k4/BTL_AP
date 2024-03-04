@@ -11,7 +11,7 @@ if(!isset($_SESSION['user'])){
     <head>
         <title>Bệnh viên ABC | Quản lý nhân viên y tế</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="./css/staff-mag.css">
+        <link rel="stylesheet" href="./css/vic-mag.css">
         <link rel="shortcut icon" href="./images/logo.png">
     </head>
 
@@ -35,10 +35,10 @@ if(!isset($_SESSION['user'])){
                     <a  href="main-web.php">Trang chủ</a>
                 </li>
                 <li>
-                    <a class="main-page" href="staff-mag.php">Quản lý nhân viên y tế</a>
+                    <a href="staff-mag.php">Quản lý nhân viên y tế</a>
                 </li>
                 <li>
-                    <a href="vic-mag.php">Quản lý bệnh nhân</a>
+                    <a class="main-page" href="vic-mag.php">Quản lý bệnh nhân</a>
                 </li>
                 <li>
                     <a href="">Quản lý thuốc và thiết bị y tế</a>
@@ -46,24 +46,24 @@ if(!isset($_SESSION['user'])){
             </ul>
         </div>
         <div class ="qlnv">
-            <div class="name-table">QUẢN LÝ NHÂN VIÊN</div>
+            <div class="name-table">QUẢN LÝ BỆNH NHÂN</div>
             <div>
-                <div class="text-insert">Tìm kiếm nhân viên:</div>
-                <form class="search-form" action="staff_mag_action.php" method="post">
-                    <div>ID:</div>
-                    <input class="search-ID" type="text" name="IDStaff">
+                <div class="text-insert">Tìm kiếm bệnh nhân:</div>
+                <form class="search-form" action="vic_mag_action.php" method="post">
+                    <div>CCCD:</div>
+                    <input class="search-ID"type="text" name="CCCDVic">
                     <div>Họ và tên:</div>
-                    <input class="search-name" type="text" name="nameStaff">
+                    <input class="search-name" type="text" name="nameVic">
                     <div>Ngày sinh:</div>
                     <input class="search-born" type="date" name="dateOfBorn" placeholder="dd-mm-yyyy">
-                    <div>Chức vụ:</div>
-                    <select class="position-staff" name="positionStaff">
+                    <div>Khoa điều trị:</div>
+                    <select class="position-vic" name="positionVic">
                         <option value="">Không</option>
-                        <option value="resident">Viện trưởng</option>
-                        <option value="">Trưởng khoa</option>
-                        <option value="">Phó khoa</option>
-                        <option value="">Bác sĩ</option>
-                        <option value="">Y tá</option>
+                        <option value="">Khoa Ngoại tổng hợp</option>
+                        <option value="">Khoa Nội tổng hợp</option>
+                        <option value="">Khoa Thần kinh</option>
+                        <option value="">Khoa Nhi</option>
+                        <option value="">Khoa Mắt</option>
                     </select>
                     <input class="search-button" type="submit" value="Tìm kiếm">
                 </form>
@@ -72,14 +72,14 @@ if(!isset($_SESSION['user'])){
                 <!-- list -->
                 <div class="list-of-nv"><?php
                     if(isset($_SESSION['list'])){?> 
-                        <table class="list-staff">
+                        <table class="list-vic">
                             <tr>
                                 <td>
                                     <table>
-                                    <th style="width: 70px;">ID</th>
+                                    <th style="width: 100px;">CCCD</th>
                                     <th>Họ và tên</th>
                                     <th style="width: 80px;">Ngày sinh</th>
-                                    <th style="width: 90px;">Chức vụ</th>
+                                    <th style="width: 90px;">Khoa điều trị</th>
                                     <th style="width: 90px;">Thông tin</th>
                                     </table>
                                 </td>
@@ -88,12 +88,12 @@ if(!isset($_SESSION['user'])){
                                 <td>
                                     <div class="scroll-table">  
                                         <table ><?php
-                                            foreach($_SESSION['list'] as $staff){ ?>
+                                            foreach($_SESSION['list'] as $vic){ ?>
                                                 <tr>
-                                                    <td style="padding-left: 5px; width: 70px;"><?php echo $staff['ID'];?></td>
-                                                    <td style="padding-left: 5px;"><?php echo $staff['name'];?></td>
-                                                    <td style="padding-left: 5px; width: 80px;"><?php echo $staff['dateOfBorn'];?></td>
-                                                    <td style="padding-left: 5px; width: 90px;"><?php echo $staff['position'];?></td>
+                                                    <td style="padding-left: 5px; width: 100px;"><?php echo $vic['CCCD'];?></td>
+                                                    <td style="padding-left: 5px;"><?php echo $vic['name'];?></td>
+                                                    <td style="padding-left: 5px; width: 80px;"><?php echo $vic['dateOfBorn'];?></td>
+                                                    <td style="padding-left: 5px; width: 90px;"><?php echo $vic['position'];?></td>
                                                     <td style="width: 90px;"><a class="align-table" href="">thông tin</a> </td> 
                                                 </tr><?php
                                             }?>
@@ -105,29 +105,37 @@ if(!isset($_SESSION['user'])){
                         unset($_SESSION['list']);
                     }else{
                         $rdb = new firebaseRDB($databaseURL);
-                        $retrive = $rdb->retrieve("/staffManager");
+                        $retrive = $rdb->retrieve("/vicManager");
                         $data = json_decode($retrive, 1);
                         if($data == ""){ ?>
-                            <table class="list-staff">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 70px;">ID</th>
-                                        <th>Họ và tên</th>
-                                        <th style="width: 80px;">Ngày sinh</th>
-                                        <th style="width: 90px;">Chức vụ</th>
-                                        <th style="width: 90px;">Thông tin</th>
-                                    </tr>
-                                </thead>
-                            </table><?php 
-                        }else{?> 
-                            <table class="list-staff">
+                            <table class="list-vic">
                                 <tr>
                                     <td>
                                         <table>
-                                        <th style="width: 70px;">ID</th>
+                                        <th style="width: 100px;">CCCD</th>
                                         <th>Họ và tên</th>
                                         <th style="width: 80px;">Ngày sinh</th>
-                                        <th style="width: 90px;">Chức vụ</th>
+                                        <th style="width: 90px;">Khoa điều trị</th>
+                                        <th style="width: 90px;">Thông tin</th>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="scroll-table">  
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table><?php 
+                        }else{?> 
+                            <table class="list-vic">
+                                <tr>
+                                    <td>
+                                        <table>
+                                        <th style="width: 100px;">CCCD</th>
+                                        <th>Họ và tên</th>
+                                        <th style="width: 80px;">Ngày sinh</th>
+                                        <th style="width: 90px;">Khoa điều trị</th>
                                         <th style="width: 90px;">Thông tin</th>
                                         </table>
                                     </td>
@@ -136,16 +144,16 @@ if(!isset($_SESSION['user'])){
                                     <td>
                                         <div class="scroll-table">  
                                             <table ><?php
-                                                foreach($data as $staff){?>
+                                                foreach($data as $vic){?>
                                                     <tr>
-                                                        <td style="padding-left: 5px; width: 70px;"><?php echo $staff['ID'];?></td>
-                                                        <td style="padding-left: 5px;"><?php echo $staff['name'];?></td>
-                                                        <td style="padding-left: 5px; width: 80px;"><?php echo $staff['dateOfBorn'];?></td>
-                                                        <td style="padding-left: 5px; width: 90px;"><?php echo $staff['position'];?></td>
+                                                        <td style="padding-left: 5px; width: 100px;"><?php echo $vic['CCCD'];?></td>
+                                                        <td style="padding-left: 5px;"><?php echo $vic['name'];?></td>
+                                                        <td style="padding-left: 5px; width: 80px;"><?php echo $vic['dateOfBorn'];?></td>
+                                                        <td style="padding-left: 5px; width: 90px;"><?php echo $vic['position'];?></td>
                                                         <td style="width: 90px;"><a class="align-table" href="">thông tin</a> </td> 
                                                     </tr><?php
                                                 }?>
-                                            </table>    
+                                            </table>
                                         </div>
                                     </td>
                                 </tr>
@@ -168,22 +176,22 @@ if(!isset($_SESSION['user'])){
                 <?php unset($_SESSION['in4']); ?>
                 <!-- insert -->
                 <div class="insert-box">
-                    <div class="text-insert">Thêm nhân viên mới:</div>
+                    <div class="text-insert">Thêm nhân bệnh nhân mới:</div>
                     
-                    <form class="insert-form" action="insert_staff_action.php" method="post">
-                        <div>ID:</div>
-                        <input class="search-ID" type="text" name="ID">
+                    <form class="insert-form" action="insert_vic_action.php" method="post">
+                        <div>CCCD:</div>
+                        <input class="search-ID" type="text" name="CCCD">
                         <div>Họ và tên:</div>
-                        <input class="search-name" type="text" name="namestaff">
+                        <input class="search-name" type="text" name="namevic">
                         <div>Ngày sinh:</div>
                         <input class="search-born" type="date" name="dateofborn">
-                        <div>Chức vụ:</div>
-                        <select class="position-staff" name="positionstaff">
-                            <option value="Viện Trưởng">Viện trưởng</option>
-                            <option value="Trưởng phòng">Trưởng phòng</option>
-                            <option value="Phó phòng">Phó phòng</option>
-                            <option value="Bác sĩ">Bác sĩ</option>
-                            <option value="Y tá">Y tá</option>
+                        <div>Khoa điều trị:</div>
+                        <select class="position-vic" name="positionvic">
+                            <option value="Khoa Ngoại tổng hợp">Khoa Ngoại tổng hợp</option>
+                            <option value="Khoa Nội tổng hợp">Khoa Nội tổng hợp</option>
+                            <option value="Khoa Thần kinh">Khoa Thần kinh</option>
+                            <option value="Khoa Nhi">Khoa Nhi</option>
+                            <option value="Khoa Mắt">Khoa Mắt</option>
                         </select>
                         <input class="search-button" type="submit" value="Thêm">
                     </form>

@@ -38,7 +38,7 @@ if(!isset($_SESSION['user'])){
                     <a href="staff-mag.php">Quản lý nhân viên y tế</a>
                 </li>
                 <li>
-                    <a href="patient-manager.php">Quản lý bệnh nhân</a>
+                    <a href="vic-mag.php">Quản lý bệnh nhân</a>
                 </li>
                 <li>
                     <a href="">Quản lý thuốc và thiết bị y tế</a>
